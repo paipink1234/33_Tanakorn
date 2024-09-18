@@ -1,0 +1,9 @@
+docker -v
+dorker ps
+docker run hello-world
+docker run busybox echo 'hello world in docker'
+docker run busybox ping google.com   
+docker system prune
+docker run -p 8800:80 nginx
+docker run -p 7800:80 nginx
+docker system df
