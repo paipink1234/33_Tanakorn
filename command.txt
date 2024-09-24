@@ -7,3 +7,11 @@ docker system prune
 docker run -p 8800:80 nginx
 docker run -p 7800:80 nginx
 docker system df
+
+docker pull wordpress 
+docker pull mysql1:5.7
+docker pull phpmyadmin/phpmyadmin
+docker  network create wordpress
+docker run --name mysql --network wordpress -e MYSQL_ROOT_PASSWORD=1111 -e MYSQL_DATABASE=wordpress_db -e MYSQL_PASSWORD=wordpress -d mysql:5.7
+docker run --name pma --network wordpress -p 8888:80 -e PMA_ARBITRARY=1 -d phpmyadmin/phpmyadmin 
+docker run -d --name wordpress --network wordpress -p 888:80 -e WORDPRESS_DB_HOST=mysql -e WORDPRESS_DB_USER=wordpress -e WORDPRESS_DB_PASSWORD=worwordpressdpress -e WORDPRESS_DB_NAME=wordpress_db 
